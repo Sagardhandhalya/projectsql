@@ -39,8 +39,11 @@ function AddProfile() {
        <form className="min-w-min  shadow-lg mb-20 shadow-inner p-5 sm:w-1/2 md:w-1/2 lg:w-1/4 m-auto  rounded " method="POST"  encType="multipart/form-data">
            
             <hr className="mb-10"/>
-
-          
+            <div  className="m-auto rounded-full border-purple overflow-hidden flex justify-center w-32 h-32 mt-10 shadow-gray-lg">
+                    <img src={Avatar} alt="logo" className="" />
+                </div>
+            <p className="m-2"> Picture : </p>
+                <input type="file" name="avatar" className="text-black border-2  p-2 rounded-xl w-full bg-blue-100 outline-none font-semibold " onChange={(e) => { setAvatar(URL.createObjectURL(e.target.files[0])) ; setFile(e.target.files[0])}} />
             <p className="m-2"> Full Name  : </p>
                 <input type="text" name="fullname" value={fullname} className="text-black border-2 p-2 rounded-xl w-full bg-blue-100 outline-none font-semibold " onChange={(e) => setName(e.target.value)} />
 
@@ -56,12 +59,9 @@ function AddProfile() {
                 <p className="m-2"> About : </p>
                 <textarea  type="text" name="about" value={about} className="text-black border-2 p-2 rounded-xl w-full bg-blue-100 outline-none font-semibold " onChange={(e) => setAbout(e.target.value)} />
                
-                <div  className="m-auto rounded-full border-purple overflow-hidden flex justify-center w-32 h-32 mt-10 shadow-gray-lg">
-                    <img src={Avatar} alt="logo" className="" />
-                </div>
+               
 
-                <p className="m-2"> Picture : </p>
-                <input type="file" name="avatar" className="text-black border-2  p-2 rounded-xl w-full bg-blue-100 outline-none font-semibold " onChange={(e) => { setAvatar(URL.createObjectURL(e.target.files[0])) ; setFile(e.target.files[0])}} />
+              
                 
                 <button type="submit"  className="p-4 block m-auto mt-4 rounded-lg bg-blue-800 flex justify-center" onClick={inputHandler} >Submit</button>
        </form>

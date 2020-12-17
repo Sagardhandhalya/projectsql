@@ -5,7 +5,7 @@ const multer = require('multer');
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'uploads')
+        cb(null, 'public/uploads')
     },
     filename: function (req, file, cb) {
         cb(null, Date.now()+'.jpg')
@@ -18,9 +18,35 @@ var upload = multer({ storage: storage })
 router.post('/addprofile', upload.single('avatar'),(req,res)=>{
 
 const user = req.body;
-console.log(req.file);
-console.log(user);
-    res.json(req.body.file)
+const pathArray = req.file.path.split('/');
+const pname = pathArray[pathArray.length-1];
+const query = {
+    text : 'insert into profiles(fullname , bd , contactno ,address , about ,filename) values($1,$2,$3,$4,$5,$6)',
+    values:[user.fullname , user.bd , user.contactno , user.address , user.about ,pname]
+}
+client.query(query , (err , output)=>{
+    if(err)
+    {
+        console.log(err.stack);
+        res.json(err);
+    }
+    else{
+        res.json(output);
+    }
+})
+
+}
+);
+
+router.get('/get-all-profiles' , (req,res)=>{
+
+    client.query('SELECT * from profiles', (err, output) => {
+        console.log(output);
+       const data = output.rows;
+        res.json(data)
+        client.end()
+    })
+    
 })
 
 router.get('/' , (req,res) =>{

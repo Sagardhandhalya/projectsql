@@ -1,30 +1,30 @@
 import '../tailwind.output.css'
 
-function Product(){
-    return(
+function Product() {
+    return (
         <div class="bg-gray-200 inline-block shadow-xl mt-5 ml-5 rounded-xl p-8 w-60 ">
 
-
-                <div class="pt-6 space-y-4">
+            <div class="pt-6 space-y-4">
                     <blockquote>
-                        <p class="text-lg font-semibold ">
-                            “Tailwind CSS is the only framework that I've seen scale
-                            on large teams. It’s easy to customize, adapts to any design,
-                            and the build size is tiny.”
-      </p>
+                    <p class="text-lg font-semibold ">
+                        “Tailwind CSS is the only framework that I've seen scale
+                        on large teams. It’s easy to customize, adapts to any design,
+                        and the build size is tiny.”
+                    </p>
                     </blockquote>
+
                     <figcaption>
-                        <div>
-                            Sarah Dayan
-      </div>
-                        <div>
-                            Staff Engineer, Algolia
-      </div>
+                        <div>Sarah Dayan</div> <div>Staff Engineer, Algolia</div>
                     </figcaption>
-                </div>
-      </div>
+            
+            </div>
+
+        </div>
     )
 }
 
+
+// "build:tailwind": "tailwindcss build src/tailwind.css -o src/tailwind.output.css",
+//     // "prestart": "npm run build:tailwind",
 
 export default Product;
