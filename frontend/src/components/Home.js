@@ -9,9 +9,7 @@ function Home() {
 
 useEffect(() => {
     
-  axios.get('http://localhost:7000/get-all-profiles').
-  
-  then((res)=>
+  axios.get('http://localhost:7000/get-all-profiles').then((res)=>
   {
       console.log(res);
       return res.data
@@ -23,6 +21,8 @@ useEffect(() => {
      setProfiles(data)
       
         
+  }).catch(()=>{
+
   })
 
     
@@ -36,7 +36,7 @@ useEffect(() => {
             }
 
             
-            <Link className="absolute bg-pink-700 bottom-8 right-8 
+            <Link className="fixed bg-pink-700 bottom-8 right-8 
              pb-2 px-4 text-6xl rounded-full
             flex justify-center" to="/add" >+</Link>
         </div>

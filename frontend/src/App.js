@@ -9,10 +9,11 @@ function App() {
     <div className="App text-white ">
 
         <NavBar />
+        
         <Switch>
         <Route path="/" component={Home} exact ></Route>
         <Route path="/add" component={AddProfile} exact ></Route>
-      </Switch>
+       </Switch>
      
      
     </div>

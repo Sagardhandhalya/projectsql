@@ -18,6 +18,7 @@ var upload = multer({ storage: storage })
 router.post('/addprofile', upload.single('avatar'),(req,res)=>{
 
 const user = req.body;
+console.log(user)
 const pathArray = req.file.path.split('/');
 const pname = pathArray[pathArray.length-1];
 const query = {
@@ -42,9 +43,9 @@ router.get('/get-all-profiles' , (req,res)=>{
 
     client.query('SELECT * from profiles', (err, output) => {
         console.log(output);
-       const data = output.rows;
+       let data = output.rows;
         res.json(data)
-        client.end()
+        
     })
     
 })
